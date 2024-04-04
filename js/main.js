@@ -1,8 +1,5 @@
 // jQuery
 $(document).ready(function() {
-    var currentLocation = $(".no").position();
-    console.log("position: ", currentLocation);
-
     // Event listener for No button click
     $(".no").click(function() {
         alert("Wrong choice. Choose again.");
@@ -12,7 +9,6 @@ $(document).ready(function() {
     $(".no").mouseenter(function() {
         var moveHorizontal = randomHorizontal();
         var moveVertical = randomVertical();
-        // var moveVertical = "0px";
         $(this).animate({left: moveHorizontal, top: moveVertical});
     });
 
