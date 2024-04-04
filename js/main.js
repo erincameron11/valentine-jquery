@@ -11,8 +11,8 @@ $(document).ready(function() {
     // Event listener for No button cursor hover
     $(".no").mouseenter(function() {
         var moveHorizontal = randomHorizontal();
-        // var moveVertical = randomVertical();
-        var moveVertical = "0px";
+        var moveVertical = randomVertical();
+        // var moveVertical = "0px";
         $(this).animate({left: moveHorizontal, top: moveVertical});
     });
 
@@ -26,55 +26,47 @@ $(document).ready(function() {
 
 // FUNCTION: used to move the No button horizontally on hover
 function randomHorizontal() {
-    // var randHorizontal = Math.floor(Math.random() * (window.innerWidth - 100));
-    // console.log("window.innerWidth:  " + window.innerWidth);
-    // console.log("horizontal: " + randHorizontal);
-
+    // Loop until a satisfactory horizontal value is calculated
     while(true) {
-        // var randHorizontal = Math.floor(Math.random() * (window.innerWidth - 100));
-
         // Find width of screen
         var width = window.innerWidth;
 
-        // Find the location of the button
+        // Find the location of the button in the window
         var noLocation = $(".no").position().left;
-        // console.log("noLocation: ", noLocation);
 
-        // Find the random number
+        // Calculate a random number
         var randHorizontal = Math.floor(Math.random() * (width + 1));
-        // console.log("randHorizontal: ", randHorizontal);
         
+        // Find the width of the No button
         var noWidth = $(".no").width();
-        // console.log("noWidth: ", noWidth);
-
-        // If within the boundaries of the screen
-        if((noLocation + randHorizontal + noWidth) < width) {
-            // console.log("total: ", noLocation + randHorizontal);
-            return randHorizontal + "px";
-        }
-
-        // Find location of the button in relation to the current screen width
-        // var noBtnWidth = $(".no").position().left;
-        // console.log("No button location: ", noBtnWidth)
 
         // Ensure the button does not exceed the screen widths
-
-        // Boundaries of the screen are between -700 and 520
-        // if(randHorizontal <= 520 && randHorizontal >= -700) {
-        //     console.log("randHorizontal: " + randHorizontal);
-        //     return randHorizontal + "px";
-        // }
-
-        // TESTING
-        // return randHorizontal + "px";
+        if((noLocation + randHorizontal + noWidth) < width) {
+            return randHorizontal + "px";
+        }
     }
-    
 }
 
 
-// FUNCTION: used to move the No button horizontally on hover
+// FUNCTION: used to move the No button vertically on hover
 function randomVertical() {
-    var randVertical = Math.floor(Math.random() * (window.innerHeight - 100));
-    console.log("vertical: " + randVertical);
-    return randVertical + "px";
+    // Loop until a satisfactory vertical value is calculated
+    while(true) {
+        // Find height of screen
+        var height = window.innerHeight;
+
+        // Find the location of the button in the window
+        var noLocation = $(".no").position().top;
+
+        // Calculate a random number
+        var randVertical = Math.floor(Math.random() * (height + 1));
+        
+        // Find the height of the No button
+        var noHeight = $(".no").height();
+
+        // Ensure the button does not exceed the screen heights
+        if((noLocation + randVertical + noHeight) < height) {
+            return randVertical + "px";
+        }
+    }
 }
